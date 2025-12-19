@@ -1,4 +1,4 @@
-fileInput = "Day 3\\inputD3.txt"
+fileInput = input(">>> ")
 
 with open(fileInput, "r", encoding="utf-8") as f: file = f.readlines()
 
