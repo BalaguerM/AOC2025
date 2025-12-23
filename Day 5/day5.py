@@ -8,7 +8,8 @@ ids = array[array.index("")+1:]
 
 ranges = []
 rangedIds = []
-counter = 0
+counterP1 = 0
+counterP2 = 0
 
 for value in array[:array.index("")]: ranges.append(value.split("-"))
 
@@ -17,8 +18,7 @@ for interval in ranges: rangedIds.append([range(int(ranges[ranges.index(interval
 for idx in ids:
     for pos in range(len(rangedIds)):
         if int(idx) in rangedIds[pos][0]:
-            counter += 1
+            counterP1 += 1
+            break
 
-print(counter)
-
-# 964 : Too high... Remove duplicates!!!
+print(counterP1)
