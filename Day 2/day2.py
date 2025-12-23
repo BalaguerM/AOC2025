@@ -14,14 +14,13 @@ try:
         firstPart, secondPart = str(i)[:len(str(i)) // 2], str(i)[len(str(i)) // 2:]
         if firstPart == secondPart:
             solP1 = solP1 + i
-
-# TO MODIFY
-        s = str(i)
-        n = len(s)
-        for k in range(1, n // 2 + 1):
-            if n % k == 0:
-                if s[:k] * (n // k) == s:
+            
+        strVal = str(i)
+        strLen = len(strVal)
+        for patternLen in range(1, strLen // 2 + 1):
+            if strLen % patternLen == 0:
+                if strVal[:patternLen] * (strLen // patternLen) == strVal:
                     solP2 = solP2 + i
                     break
                 
-finally: print("Part 1:", solP1, "Part 2:", solP2)
+finally: print("Part 1:", solP1, "// Part 2:", solP2)

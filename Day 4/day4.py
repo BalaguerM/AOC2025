@@ -1,25 +1,35 @@
-fileInput = "Day 4\\inputD4.txt"
+fileInput = input(">>> ")
 
 with open(fileInput, "r", encoding="utf-8") as f: file = f.readlines()
 
-array = [list(line.strip()) for line in file]
+arrayP1 = [list(line.strip()) for line in file]
+
 directions = (-1, -1), (1, 1), (0, 1), (0, -1), (1, 0), (-1, 0), (-1, 1), (1, -1)
 countP1 = 0
 countP2 = 0
+done = False 
+loop = 0
 
-while True:
-    for x in range(len(array)):
-        for y in range(len(array[x])):
+while not done:
+    done = True
+    loop += 1
+
+    arrayP2 = [row[:] for row in arrayP1]
+
+    for x in range(len(arrayP1)):
+        for y in range(len(arrayP1[x])):
             buffer = 0
-            if array[x][y] == "@":            
+            if arrayP1[x][y] == "@":            
                 for dx, dy, in directions:
-                    if 0 <= x+dx < len(array) and 0 <= y+dy < len(array[x]):
-                        if array[x+dx][y+dy] == "@": buffer += 1
+                    if 0 <= x+dx < len(arrayP1) and 0 <= y+dy < len(arrayP1[x]) and arrayP1[x+dx][y+dy] == "@": buffer += 1
+                
                 if buffer < 4: 
-                    countP1 += 1
-                    array[x][y] = "."
-                    print(countP1)
+                    countP2 += 1
+                    arrayP2[x][y] = "."
+                    done = False
+    
+    arrayP1 = arrayP2
+    
+    if loop == 1: countP1 = countP2
 
-
-
-# Answer: 8768
+print("Part 1:", countP1, "// Part 2:", countP2)
